@@ -73,11 +73,9 @@ namespace Useranagement.Services
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
             var random = new Random();
-            double flt = random.NextDouble();
-            int shift = Convert.ToInt32(Math.Floor(25 * flt));
-            string letter;
-            letter = Convert.ToString(shift + 65);
-            user.ActivationCode = letter;
+            
+            
+            user.ActivationCode = Helper.Helper.RandomString(20);
                 user.IsActive = false;
             _context.Users.Add(user);
             _context.SaveChanges();
